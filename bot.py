@@ -1,4 +1,8 @@
 import discord
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -17,4 +21,4 @@ async def on_message(message):
     if message.content == '!hello':
         await message.channel.send('Hello! I am alive!')
 
-client.run('YOUR_TOKEN_HERE')
+client.run(os.getenv('DISCORD_TOKEN'))
