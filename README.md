@@ -1,11 +1,10 @@
-# Discord Bot 🤖
+# 🤖 Discord Bot
 
-A simple Discord bot built with Python.
+A fun Discord bot built with Python that responds to commands in your server.
 
-## Features
-- Responds to `!hello` with a greeting
+---
 
-## Setup
+## 🚀 Getting Started
 
 ### Prerequisites
 - Python 3.8+
@@ -26,17 +25,23 @@ A simple Discord bot built with Python.
 4. Run the bot
    python bot.py
 
-## Commands
+---
+
+## 💬 Commands
+
 | Command | Description |
 |---------|-------------|
-| `!hello` | Bot says hello back |
-| '!roast'| Bot roasts anyone that is tagged next to the command |
+| `!hello` | Bot greets you back |
+| `!roast @someone` | Roasts the tagged person |
 
-## Tech Used
-- Python
-- discord.py
-<<<<<<< HEAD
-- dotenv# discord-bot
-=======
-- dotenv# discord-bot
->>>>>>> a175032f20b9a6748c8bace835a870d00e5c54e7
+---
+
+## 🛠️ Built With
+- [Python](https://python.org)
+- [discord.py](https://discordpy.readthedocs.io)
+- [python-dotenv](https://pypi.org/project/python-dotenv/)
+
+---
+
+## ⚠️ Note
+Never share your bot token. Store it in a `.env` file and make sure `.env` is in your `.gitignore`.
