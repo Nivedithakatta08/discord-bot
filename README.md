@@ -30,6 +30,7 @@ A simple Discord bot built with Python.
 | Command | Description |
 |---------|-------------|
 | `!hello` | Bot says hello back |
+| '!roast'| Bot roasts anyone that is tagged next to the command |
 
 ## Tech Used
 - Python
