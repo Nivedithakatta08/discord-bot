@@ -34,4 +34,8 @@ A simple Discord bot built with Python.
 ## Tech Used
 - Python
 - discord.py
+<<<<<<< HEAD
 - dotenv# discord-bot
+=======
+- dotenv# discord-bot
+>>>>>>> a175032f20b9a6748c8bace835a870d00e5c54e7
