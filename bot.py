@@ -38,4 +38,25 @@ async def on_message(message):
         else:
             await message.channel.send("Who do you want me to roast? Tag someone! e.g. `!roast @someone`")
 
+    if message.content.startswith('!comeback'):
+        comebacks = [
+        "Debba adhurs kadhu?",
+        "Builder handover chesada? Padmavathi happy eh na? Tiles esthunaru anta kadha!",
+        "Athiga aavesha pade magaadu, athiga aashapade aadadhi baagupadinattu charitra lo ledhu!",
+        "Evadu kodithe dimma tirigi mind block aipoddo vaade pandu gaadu!",
+        "Veera Shankar Reddy, Mokke kada ani peekeste, peeka kosta.",
+        "Current teegalekki aadukuntanu antav entayya? Kaaki la maadipothav!",
+        "You Know...Guntur Bolke Ek Sheher Hain? Nenu ikkada Kotaananuko…Resound Udhar Aatha!!",
+        "Chantigaadu LOCAL!",
+        "Appal naidu...dadagiri ki vachchina dourjanyaaniki vachchina goondaisaniki vachchina grouplu katataniki vachchina rajakiyam tho vachchina rowdyisam tho vachchina...puta ko sevam lekkana chappuna port ki bali avuthaayi. Teeram lo keratalu la erupu rangu pusukoni potethutaiii!!!",
+        "Doosukelle banam, race lo Gurram venakki chudavu!",
+        ]
+
+    if message.mentions:
+            target = message.mentions[0]
+            comeback = random.choice(comebacks)
+            await message.channel.send(f"{target.mention} {comeback}")
+    else:
+            await message.channel.send("Tag someone! e.g. `!comeback @someone`")
+
 client.run(os.getenv('DISCORD_TOKEN'))
