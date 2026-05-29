@@ -33,6 +33,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 |---------|-------------|
 | `!hello` | Bot greets you back |
 | `!roast @someone` | Roasts the tagged person |
+| `!comeback @someone` | Fires an iconic telugu dialogue at them |
 
 ---
 
