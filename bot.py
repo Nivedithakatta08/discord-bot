@@ -56,7 +56,15 @@ async def on_message(message):
             target = message.mentions[0]
             comeback = random.choice(comebacks)
             await message.channel.send(f"{target.mention} {comeback}")
+    
+
+    if message.content.startswith('!toss'):
+        result = random.choice(['Heads! 🪙', 'Tails! 🪙'])
+    
+    if message.mentions:
+        target = message.mentions[0]
+        await message.channel.send(f"{target.mention} {result}")
     else:
-            await message.channel.send("Tag someone! e.g. `!comeback @someone`")
+        await message.channel.send(f"{message.author.mention} {result}")
 
 client.run(os.getenv('DISCORD_TOKEN'))
