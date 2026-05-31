@@ -36,6 +36,8 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!comeback @someone` | Fires an iconic telugu dialogue at them |
 | `!toss` | tosses heads or tails of a coin |
 | `!rps` | rock-paper-scissors |
+| `!joke` | Tells a random joke with a spoiler punchline |
+| `!poll [question]` | Creates a yes/no poll with reactions |
 
 ---
 
@@ -43,6 +45,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 - [Python](https://python.org)
 - [discord.py](https://discordpy.readthedocs.io)
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
+- [Official Joke API](https://official-joke-api.appspot.com)
 
 ---
 
