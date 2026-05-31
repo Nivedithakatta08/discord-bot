@@ -70,10 +70,11 @@ async def on_message(message):
     if message.content.startswith('!rock-paper-scissors'):
         result = random.choice(['Rock!','Paper!','Scissors!'])
 
-    if message.mentions:
-        target = message.mentions[0]
-        result = random.choice(result)
-        await message.channel.send(f"{target.mention} {result}")
+        if message.mentions:
+            target = message.mentions[0]
+            await message.channel.send(f"{target.mention} {result}")
+        else:
+            await message.channel.send(f"{message.author.mention} {result}")
 
 
 client.run(os.getenv('DISCORD_TOKEN'))
