@@ -35,6 +35,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!roast @someone` | Roasts the tagged person |
 | `!comeback @someone` | Fires an iconic telugu dialogue at them |
 | `!toss` | tosses heads or tails of a coin |
+| `!rps` | rock-paper-scissors |
 
 ---
 
