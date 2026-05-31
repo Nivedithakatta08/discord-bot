@@ -1,7 +1,9 @@
 import discord
 import random
+import requests
 from dotenv import load_dotenv
 import os
+
 
 load_dotenv()
 
@@ -70,5 +72,19 @@ async def on_message(message):
             await message.channel.send(f"{target.mention} {result}")
         else:
             await message.channel.send(f"{message.author.mention} {result}")
+
+    if message.content == '!joke':
+        response = requests.get('https://official-joke-api.appspot.com/random_joke')
+        joke = response.json()
+        await message.channel.send(f"{joke['setup']}\n\n||{joke['punchline']}||")
+
+    if message.content.startswith('!poll'):
+        question = message.content[6:].strip()
+        if not question:
+            await message.channel.send("Ask something! e.g. `!poll Is pineapple on pizza good?`")
+        else:
+            poll = await message.channel.send(f"📊 **{question}**\n\n✅ Yes\n❌ No")
+            await poll.add_reaction('✅')
+            await poll.add_reaction('❌')
 
 client.run(os.getenv('DISCORD_TOKEN'))
