@@ -38,7 +38,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!rps` | rock-paper-scissors |
 | `!joke` | Tells a random joke with a spoiler punchline |
 | `!poll [question]` | Creates a yes/no poll with reactions |
-
+| `!truth` | Picks a random truth question and directs it at whoever sent the command |
 ---
 
 ## 🛠️ Built With
