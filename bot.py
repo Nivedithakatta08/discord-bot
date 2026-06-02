@@ -87,4 +87,19 @@ async def on_message(message):
             await poll.add_reaction('✅')
             await poll.add_reaction('❌')
 
+    if message.content == '!truth':
+        truths = [
+            "What's the most embarrassing thing you've ever done?",
+            "Have you ever lied to get out of trouble? What was it?",
+            "What's your biggest fear?",
+            "Have you ever had a crush on someone in this server?",
+            "What's the worst gift you've ever received?",
+            "Have you ever blamed someone else for something you did?",
+            "What's the most childish thing you still do?",
+            "Have you ever ghosted someone? Why?",
+            "What's your most used emoji and what does that say about you?",
+            "What's a secret you've never told anyone?",
+        ]
+        await message.channel.send(f"🎯 Truth for {message.author.mention}:\n\n**{random.choice(truths)}**")
+
 client.run(os.getenv('DISCORD_TOKEN'))
