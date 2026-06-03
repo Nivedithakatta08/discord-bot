@@ -102,4 +102,13 @@ async def on_message(message):
         ]
         await message.channel.send(f"🎯 Truth for {message.author.mention}:\n\n**{random.choice(truths)}**")
 
+        # Usage: !choose pizza | burger | sushi
+    if message.content.startswith('!choose'):
+        options = message.content[8:].split('|')
+        if len(options) < 2:
+            await message.channel.send("Give me options! e.g. `!choose pizza | burger | sushi`")
+        else:
+            pick = random.choice(options).strip()
+            await message.channel.send(f"🎲 I choose: **{pick}**")
+
 client.run(os.getenv('DISCORD_TOKEN'))
