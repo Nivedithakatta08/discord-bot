@@ -40,6 +40,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!poll [question]` | Creates a yes/no poll with reactions |
 | `!truth` | Picks a random truth question and directs it at whoever sent the command |
 | `!choose` | settles arguments by picking from options |
+| `!remindme` | Set a reminder inside Discord & the bot DMs you when the time is up |
 ---
 
 ## 🛠️ Built With
