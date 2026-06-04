@@ -1,6 +1,7 @@
 import discord
 import random
 import requests
+import asyncio
 from dotenv import load_dotenv
 import os
 
@@ -110,5 +111,31 @@ async def on_message(message):
         else:
             pick = random.choice(options).strip()
             await message.channel.send(f"🎲 I choose: **{pick}**")
+
+    if message.content.startswith('!remindme'):
+        parts = message.content.split(' ', 2)
+    # Usage: !remindme 10m Study for exam
+    if len(parts) < 3:
+        await message.channel.send("Usage: `!remindme <time> <reminder>`\ne.g. `!remindme 10m Study for exam`")
+    else:
+        time_str = parts[1]
+        reminder_text = parts[2]
+
+        if time_str.endswith('m'):
+            seconds = int(time_str[:-1]) * 60
+        elif time_str.endswith('h'):
+            seconds = int(time_str[:-1]) * 3600
+        else:
+            await message.channel.send("Use `m` for minutes or `h` for hours. e.g. `30m` or `2h`")
+            return
+
+        await message.channel.send(f"⏰ Got it {message.author.mention}! I'll remind you in **{time_str}**.")
+
+        await asyncio.sleep(seconds)
+
+        try:
+            await message.author.send(f"⏰ **Reminder:** {reminder_text}")
+        except:
+            await message.channel.send(f"⏰ {message.author.mention} **Reminder:** {reminder_text}")
 
 client.run(os.getenv('DISCORD_TOKEN'))
