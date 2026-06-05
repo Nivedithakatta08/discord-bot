@@ -6,7 +6,6 @@ import math
 from dotenv import load_dotenv
 import os
 
-
 load_dotenv()
 
 intents = discord.Intents.default()
@@ -104,7 +103,6 @@ async def on_message(message):
         ]
         await message.channel.send(f"🎯 Truth for {message.author.mention}:\n\n**{random.choice(truths)}**")
 
-        # Usage: !choose pizza | burger | sushi
     if message.content.startswith('!choose'):
         options = message.content[8:].split('|')
         if len(options) < 2:
@@ -115,40 +113,34 @@ async def on_message(message):
 
     if message.content.startswith('!remindme'):
         parts = message.content.split(' ', 2)
-    # Usage: !remindme 10m Study for exam
-    if len(parts) < 3:
-        await message.channel.send("Usage: `!remindme <time> <reminder>`\ne.g. `!remindme 10m Study for exam`")
-    else:
-        time_str = parts[1]
-        reminder_text = parts[2]
-
-        if time_str.endswith('m'):
-            seconds = int(time_str[:-1]) * 60
-        elif time_str.endswith('h'):
-            seconds = int(time_str[:-1]) * 3600
+        if len(parts) < 3:
+            await message.channel.send("Usage: `!remindme <time> <reminder>`\ne.g. `!remindme 10m Study for exam`")
         else:
-            await message.channel.send("Use `m` for minutes or `h` for hours. e.g. `30m` or `2h`")
-            return
+            time_str = parts[1]
+            reminder_text = parts[2]
+            if time_str.endswith('m'):
+                seconds = int(time_str[:-1]) * 60
+            elif time_str.endswith('h'):
+                seconds = int(time_str[:-1]) * 3600
+            else:
+                await message.channel.send("Use `m` for minutes or `h` for hours. e.g. `30m` or `2h`")
+                return
+            await message.channel.send(f"⏰ Got it {message.author.mention}! I'll remind you in **{time_str}**.")
+            await asyncio.sleep(seconds)
+            try:
+                await message.author.send(f"⏰ **Reminder:** {reminder_text}")
+            except:
+                await message.channel.send(f"⏰ {message.author.mention} **Reminder:** {reminder_text}")
 
-        await message.channel.send(f"⏰ Got it {message.author.mention}! I'll remind you in **{time_str}**.")
-
-        await asyncio.sleep(seconds)
-
-        try:
-            await message.author.send(f"⏰ **Reminder:** {reminder_text}")
-        except:
-            await message.channel.send(f"⏰ {message.author.mention} **Reminder:** {reminder_text}")
-
-    
     if message.content.startswith('!calc'):
-     expr = message.content[6:].strip()
-    if not expr:
-        await message.channel.send("Usage: `!calc <expression>` e.g. `!calc 25 * 4 + 10`")
-    else:
-        try:
-            result = eval(expr, {"__builtins__": {}}, {"sqrt": math.sqrt, "pi": math.pi})
-            await message.channel.send(f"🧮 `{expr}` = **{result}**")
-        except:
-            await message.channel.send("❌ Invalid expression.")
+        expr = message.content[6:].strip()
+        if not expr:
+            await message.channel.send("Usage: `!calc <expression>` e.g. `!calc 25 * 4 + 10`")
+        else:
+            try:
+                result = eval(expr, {"__builtins__": {}}, {"sqrt": math.sqrt, "pi": math.pi})
+                await message.channel.send(f"🧮 `{expr}` = **{result}**")
+            except:
+                await message.channel.send("❌ Invalid expression.")
 
 client.run(os.getenv('DISCORD_TOKEN'))
