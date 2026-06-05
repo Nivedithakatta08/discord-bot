@@ -141,13 +141,13 @@ async def on_message(message):
 
     if message.content.startswith('!calc'):
         expr = message.content[6:].strip()
-    if not expr:
-        await message.channel.send("Usage: `!calc <expression>` e.g. `!calc 25 * 4 + 10`")
-    else:
-        try:
-            result = eval(expr, {"__builtins__": {}}, {"sqrt": math.sqrt, "pi": math.pi})
-            await message.channel.send(f"🧮 `{expr}` = **{result}**")
-        except:
-            await message.channel.send("❌ Invalid expression. Try something like `!calc 10 * 5 + 3`")
+        if not expr:
+            await message.channel.send("Usage: `!calc <expression>` e.g. `!calc 25 * 4 + 10`")
+        else:
+            try:
+                result = eval(expr, {"__builtins__": {}}, {"sqrt": math.sqrt, "pi": math.pi})
+                await message.channel.send(f"🧮 `{expr}` = **{result}**")
+            except:
+                await message.channel.send("❌ Invalid expression. Try something like `!calc 10 * 5 + 3`")
 
 client.run(os.getenv('DISCORD_TOKEN'))
