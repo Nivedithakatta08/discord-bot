@@ -2,6 +2,7 @@ import discord
 import random
 import requests
 import asyncio
+import math
 from dotenv import load_dotenv
 import os
 
@@ -137,5 +138,16 @@ async def on_message(message):
             await message.author.send(f"⏰ **Reminder:** {reminder_text}")
         except:
             await message.channel.send(f"⏰ {message.author.mention} **Reminder:** {reminder_text}")
+
+    if message.content.startswith('!calc'):
+        expr = message.content[6:].strip()
+    if not expr:
+        await message.channel.send("Usage: `!calc <expression>` e.g. `!calc 25 * 4 + 10`")
+    else:
+        try:
+            result = eval(expr, {"__builtins__": {}}, {"sqrt": math.sqrt, "pi": math.pi})
+            await message.channel.send(f"🧮 `{expr}` = **{result}**")
+        except:
+            await message.channel.send("❌ Invalid expression. Try something like `!calc 10 * 5 + 3`")
 
 client.run(os.getenv('DISCORD_TOKEN'))
