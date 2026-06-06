@@ -41,6 +41,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!truth` | Picks a random truth question and directs it at whoever sent the command |
 | `!choose` | settles arguments by picking from options |
 | `!remindme` | Set a reminder inside Discord & the bot DMs you when the time is up |
+| `!calc <expression>` | calculates the expression |
 ---
 
 ## 🛠️ Built With
