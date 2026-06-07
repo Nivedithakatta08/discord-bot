@@ -145,19 +145,19 @@ async def on_message(message):
 
     if message.content.startswith('!define'):
         word = message.content[8:].strip()
-    if not word:
-        await message.channel.send("Usage: `!define <word>` e.g. `!define ephemeral`")
-    else:
-        response = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}")
-        if response.status_code != 200:
-            await message.channel.send(f"❌ No definition found for **{word}**")
+        if not word:
+            await message.channel.send("Usage: `!define <word>` e.g. `!define ephemeral`")
         else:
-            data = response.json()[0]
-            definition = data['meanings'][0]['definitions'][0]['definition']
-            part_of_speech = data['meanings'][0]['partOfSpeech']
-            await message.channel.send(
-                f"📖 **{word.capitalize()}** *({part_of_speech})*\n\n{definition}"
-            )
+            response = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}")
+            if response.status_code != 200:
+                await message.channel.send(f"❌ No definition found for **{word}**")
+            else:
+                data = response.json()[0]
+                definition = data['meanings'][0]['definitions'][0]['definition']
+                part_of_speech = data['meanings'][0]['partOfSpeech']
+                await message.channel.send(
+                    f"📖 **{word.capitalize()}** *({part_of_speech})*\n\n{definition}"
+                )
 
     if message.content.startswith('!avatar'):
         if message.mentions:
