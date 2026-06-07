@@ -43,6 +43,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!remindme` | Set a reminder inside Discord & the bot DMs you when the time is up |
 | `!calc <expression>` | calculates the expression |
 | `!define` | look up the definition of any word without leaving discord |
+| `!avatar @someone` | shows avatar of the tagged user | 
 ---
 
 ## 🛠️ Built With
