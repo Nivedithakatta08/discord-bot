@@ -144,7 +144,7 @@ async def on_message(message):
                 await message.channel.send("❌ Invalid expression.")
 
     if message.content.startswith('!define'):
-     word = message.content[8:].strip()
+        word = message.content[8:].strip()
     if not word:
         await message.channel.send("Usage: `!define <word>` e.g. `!define ephemeral`")
     else:
@@ -165,6 +165,5 @@ async def on_message(message):
         else:
             target = message.author
         await message.channel.send(f"🖼️ **{target.display_name}'s Avatar**\n{target.display_avatar.url}")
-
 
 client.run(os.getenv('DISCORD_TOKEN'))
