@@ -159,5 +159,12 @@ async def on_message(message):
                 f"📖 **{word.capitalize()}** *({part_of_speech})*\n\n{definition}"
             )
 
+    if message.content.startswith('!avatar'):
+     if message.mentions:
+        target = message.mentions[0]
+    else:
+        target = message.author
+    await message.channel.send(f"🖼️ **{target.display_name}'s Avatar**\n{target.display_avatar.url}")
+
 
 client.run(os.getenv('DISCORD_TOKEN'))
