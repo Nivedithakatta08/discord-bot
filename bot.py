@@ -166,4 +166,14 @@ async def on_message(message):
             target = message.author
         await message.channel.send(f"🖼️ **{target.display_name}'s Avatar**\n{target.display_avatar.url}")
 
+    if message.content.startswith('!quote'):
+     quotes = [
+        "Believe you can and you're halfway there. – Theodore Roosevelt",
+        "In the middle of every difficulty lies opportunity. – Albert Einstein",
+        "Why so serious? – The Dark Knight",
+        "Stay hungry, stay foolish. – Steve Jobs",
+        "Do or do not. There is no try. – Yoda",
+    ]
+    await message.channel.send(f"💡 Quote for {message.author.mention}:\n\n**{random.choice(quotes)}**")
+
 client.run(os.getenv('DISCORD_TOKEN'))
