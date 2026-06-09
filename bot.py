@@ -176,4 +176,16 @@ async def on_message(message):
     ]
     await message.channel.send(f"💡 Quote for {message.author.mention}:\n\n**{random.choice(quotes)}**")
 
+    if message.content == '!serverinfo':
+    guild = message.guild
+    await message.channel.send(
+        f"🏠 **Server Info**\n\n"
+        f"📛 Name: **{guild.name}**\n"
+        f"👑 Owner: **{guild.owner}**\n"
+        f"👥 Members: **{guild.member_count}**\n"
+        f"📅 Created: **{guild.created_at.strftime('%d %B %Y')}**\n"
+        f"💬 Channels: **{len(guild.channels)}**\n"
+        f"🎭 Roles: **{len(guild.roles)}**"
+    )
+
 client.run(os.getenv('DISCORD_TOKEN'))
