@@ -45,6 +45,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!define` | look up the definition of any word without leaving discord |
 | `!avatar @someone` | shows avatar of the tagged user | 
 | `!quote` | gives the user a random quotation | 
+| `!serverinfo` | shows info about the current discord server |
 ---
 
 ## 🛠️ Built With
