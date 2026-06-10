@@ -178,4 +178,19 @@ async def on_message(message):
             f"🎭 Roles: **{len(guild.roles)}**"
         )
 
+    if message.content.startswith('!userinfo'):
+     if message.mentions:
+        target = message.mentions[0]
+    else:
+        target = message.author
+    await message.channel.send(
+        f"👤 **User Info**\n\n"
+        f"🪪 Name: **{target.name}**\n"
+        f"🏷️ Display Name: **{target.display_name}**\n"
+        f"🆔 ID: **{target.id}**\n"
+        f"📅 Account Created: **{target.created_at.strftime('%d %B %Y')}**\n"
+        f"📥 Joined Server: **{target.joined_at.strftime('%d %B %Y')}**\n"
+        f"🎭 Top Role: **{target.top_role.name}**"
+    )
+
 client.run(os.getenv('DISCORD_TOKEN'))
