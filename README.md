@@ -46,6 +46,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!avatar @someone` | shows avatar of the tagged user | 
 | `!quote` | gives the user a random quotation | 
 | `!serverinfo` | shows info about the current discord server |
+| `!userinfo` | shows the info about the user |
 ---
 
 ## 🛠️ Built With
