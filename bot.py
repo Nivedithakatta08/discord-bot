@@ -194,7 +194,7 @@ async def on_message(message):
     )
 
     if message.content.startswith('!coinflip'):
-    parts = message.content.split(' ', 1)
+        parts = message.content.split(' ', 1)
     if len(parts) < 2 or parts[1].lower() not in ['heads', 'tails']:
         await message.channel.send("Usage: `!coinflip heads` or `!coinflip tails`")
     else:
