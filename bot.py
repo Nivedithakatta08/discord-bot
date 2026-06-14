@@ -193,4 +193,16 @@ async def on_message(message):
             f"🎭 Top Role: **{target.top_role.name}**"
     )
 
+    if message.content.startswith('!coinflip'):
+    parts = message.content.split(' ', 1)
+    if len(parts) < 2 or parts[1].lower() not in ['heads', 'tails']:
+        await message.channel.send("Usage: `!coinflip heads` or `!coinflip tails`")
+    else:
+        guess = parts[1].lower()
+        result = random.choice(['heads', 'tails'])
+        if guess == result:
+            await message.channel.send(f"🪙 It's **{result}**! {message.author.mention} guessed right! 🎉")
+        else:
+            await message.channel.send(f"🪙 It's **{result}**! {message.author.mention} guessed wrong! 💀")
+
 client.run(os.getenv('DISCORD_TOKEN'))
