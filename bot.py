@@ -207,9 +207,9 @@ async def on_message(message):
 
     if message.content == '!number':
         response = requests.get('http://numbersapi.com/random/trivia')
-    if response.status_code == 200:
-        await message.channel.send(f"🔢 {response.text}")
-    else:
-        await message.channel.send("❌ Couldn't fetch a fact right now, try again!")
+        if response.status_code == 200:
+            await message.channel.send(f"🔢 {response.text}")
+        else:
+            await message.channel.send("❌ Couldn't fetch a fact right now, try again!")
 
 client.run(os.getenv('DISCORD_TOKEN'))
