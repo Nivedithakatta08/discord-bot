@@ -191,28 +191,28 @@ async def on_message(message):
             f"📅 Account Created: **{target.created_at.strftime('%d %B %Y')}**\n"
             f"📥 Joined Server: **{target.joined_at.strftime('%d %B %Y')}**\n"
             f"🎭 Top Role: **{target.top_role.name}**"
-    )
+        )
 
     if message.content.startswith('!coinflip'):
         parts = message.content.split(' ', 1)
-    if len(parts) < 2 or parts[1].lower() not in ['heads', 'tails']:
-        await message.channel.send("Usage: `!coinflip heads` or `!coinflip tails`")
-    else:
-        guess = parts[1].lower()
-        result = random.choice(['heads', 'tails'])
-        if guess == result:
-            await message.channel.send(f"🪙 It's **{result}**! {message.author.mention} guessed right! 🎉")
+        if len(parts) < 2 or parts[1].lower() not in ['heads', 'tails']:
+            await message.channel.send("Usage: `!coinflip heads` or `!coinflip tails`")
         else:
-            await message.channel.send(f"🪙 It's **{result}**! {message.author.mention} guessed wrong! 💀")
+            guess = parts[1].lower()
+            result = random.choice(['heads', 'tails'])
+            if guess == result:
+                await message.channel.send(f"🪙 It's **{result}**! {message.author.mention} guessed right! 🎉")
+            else:
+                await message.channel.send(f"🪙 It's **{result}**! {message.author.mention} guessed wrong! 💀")
 
     if message.content == '!quote':
         response = requests.get('https://zenquotes.io/api/random')
-    if response.status_code == 200:
-        data = response.json()[0]
-        quote = data['q']
-        author = data['a']
-        await message.channel.send(f"💬 *\"{quote}\"*\n\n— **{author}**")
-    else:
-        await message.channel.send("❌ Couldn't fetch a quote right now, try again!")        
+        if response.status_code == 200:
+            data = response.json()[0]
+            quote = data['q']
+            author = data['a']
+            await message.channel.send(f"💬 *\"{quote}\"*\n\n— **{author}**")
+        else:
+            await message.channel.send("❌ Couldn't fetch a quote right now, try again!")
 
 client.run(os.getenv('DISCORD_TOKEN'))
