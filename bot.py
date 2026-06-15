@@ -205,4 +205,14 @@ async def on_message(message):
         else:
             await message.channel.send(f"🪙 It's **{result}**! {message.author.mention} guessed wrong! 💀")
 
+    if message.content == '!quote':
+        response = requests.get('https://zenquotes.io/api/random')
+    if response.status_code == 200:
+        data = response.json()[0]
+        quote = data['q']
+        author = data['a']
+        await message.channel.send(f"💬 *\"{quote}\"*\n\n— **{author}**")
+    else:
+        await message.channel.send("❌ Couldn't fetch a quote right now, try again!")        
+
 client.run(os.getenv('DISCORD_TOKEN'))
