@@ -48,6 +48,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!serverinfo` | shows info about the current discord server |
 | `!userinfo` | shows the info about the user |
 | `!coinflip` | bet on heads or tails |
+| `!quote` | gives a random motivational quotation |
 ---
 
 ## 🛠️ Built With
