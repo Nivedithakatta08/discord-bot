@@ -50,6 +50,8 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!coinflip` | bet on heads or tails |
 | `!number` | gives a fact about a random number |
 | `!age <birth year>` | calculates how old someone is from their birth year |
+| `!horoscope <sign>` | gives a fake dramatic horoscope for tagged user's star sign|
+
 ---
 
 ## 🛠️ Built With
