@@ -226,7 +226,7 @@ async def on_message(message):
 
     if message.content.startswith('!horoscope'):
         sign = message.content[11:].strip().lower()
-    horoscopes = {
+        horoscopes = {
         "aries": "The stars say you will trip today. Watch your step. 🐏",
         "taurus": "Mercury is in retrograde and so is your bank account. 🐂",
         "gemini": "You will send a text to the wrong person today. Good luck. 👯",
