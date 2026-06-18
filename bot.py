@@ -205,6 +205,16 @@ async def on_message(message):
             else:
                 await message.channel.send(f"🪙 It's **{result}**! {message.author.mention} guessed wrong! 💀")
 
+    if message.content == '!quote':
+        response = requests.get('https://zenquotes.io/api/random')
+        if response.status_code == 200:
+            data = response.json()[0]
+            quote = data['q']
+            author = data['a']
+            await message.channel.send(f"💬 *\"{quote}\"*\n\n— **{author}**")
+        else:
+            await message.channel.send("❌ Couldn't fetch a quote right now, try again!")
+
     if message.content == '!number':
         response = requests.get('http://numbersapi.com/random/trivia')
         if response.status_code == 200:
@@ -214,35 +224,52 @@ async def on_message(message):
 
     if message.content.startswith('!age'):
         parts = message.content.split(' ', 1)
-    if len(parts) < 2:
-        await message.channel.send("Usage: `!age <birth year>` e.g. `!age 2003`")
-    else:
-        try:
-            birth_year = int(parts[1].strip())
-            age = 2026 - birth_year
-            await message.channel.send(f"🎂 You are **{age} years old!**")
-        except:
-            await message.channel.send("❌ Enter a valid year e.g. `!age 2003`")
+        if len(parts) < 2:
+            await message.channel.send("Usage: `!age <birth year>` e.g. `!age 2003`")
+        else:
+            try:
+                birth_year = int(parts[1].strip())
+                age = 2026 - birth_year
+                await message.channel.send(f"🎂 You are **{age} years old!**")
+            except:
+                await message.channel.send("❌ Enter a valid year e.g. `!age 2003`")
+
+    if message.content.startswith('!compliment'):
+        compliments = [
+            "You light up every room you walk into! ✨",
+            "You're smarter than you think! 🧠",
+            "You have an amazing sense of humor! 😄",
+            "You make the world a better place just by being in it! 🌍",
+            "You're an absolute legend! 🏆",
+            "You're the kind of person everyone wants as a friend! 💛",
+            "Your vibe is unmatched! 🔥",
+            "You're genuinely one of a kind! 🌟",
+        ]
+        if message.mentions:
+            target = message.mentions[0]
+            await message.channel.send(f"{target.mention} {random.choice(compliments)}")
+        else:
+            await message.channel.send("Tag someone! e.g. `!compliment @someone`")
 
     if message.content.startswith('!horoscope'):
         sign = message.content[11:].strip().lower()
         horoscopes = {
-        "aries": "The stars say you will trip today. Watch your step. 🐏",
-        "taurus": "Mercury is in retrograde and so is your bank account. 🐂",
-        "gemini": "You will send a text to the wrong person today. Good luck. 👯",
-        "cancer": "The moon is crying. That's you. That's literally you. 🦀",
-        "leo": "You looked in the mirror 14 times today. The stars counted. 🦁",
-        "virgo": "You will make a to-do list and complete nothing on it. 📋",
-        "libra": "You will spend 45 minutes choosing what to watch and then not watch it. ⚖️",
-        "scorpio": "Someone is thinking about you. It's not good. 🦂",
-        "sagittarius": "You will say 'I'm almost ready' for the next 3 hours. 🏹",
-        "capricorn": "The grind never stops. Neither does your suffering. 🐐",
-        "aquarius": "You will have a great idea and tell no one about it. 🪣",
-        "pisces": "You will daydream so hard you miss your stop. 🐟",
-    }
-    if sign not in horoscopes:
-        await message.channel.send("Usage: `!horoscope <sign>` e.g. `!horoscope leo`")
-    else:
-        await message.channel.send(f"🔮 **{sign.capitalize()} Horoscope:**\n\n{horoscopes[sign]}")
+            "aries": "The stars say you will trip today. Watch your step. 🐏",
+            "taurus": "Mercury is in retrograde and so is your bank account. 🐂",
+            "gemini": "You will send a text to the wrong person today. Good luck. 👯",
+            "cancer": "The moon is crying. That's you. That's literally you. 🦀",
+            "leo": "You looked in the mirror 14 times today. The stars counted. 🦁",
+            "virgo": "You will make a to-do list and complete nothing on it. 📋",
+            "libra": "You will spend 45 minutes choosing what to watch and then not watch it. ⚖️",
+            "scorpio": "Someone is thinking about you. It's not good. 🦂",
+            "sagittarius": "You will say 'I'm almost ready' for the next 3 hours. 🏹",
+            "capricorn": "The grind never stops. Neither does your suffering. 🐐",
+            "aquarius": "You will have a great idea and tell no one about it. 🪣",
+            "pisces": "You will daydream so hard you miss your stop. 🐟",
+        }
+        if sign not in horoscopes:
+            await message.channel.send("Usage: `!horoscope <sign>` e.g. `!horoscope leo`")
+        else:
+            await message.channel.send(f"🔮 **{sign.capitalize()} Horoscope:**\n\n{horoscopes[sign]}")
 
 client.run(os.getenv('DISCORD_TOKEN'))
