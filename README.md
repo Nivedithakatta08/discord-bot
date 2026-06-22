@@ -9,6 +9,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 ### Prerequisites
 - Python 3.8+
 - A Discord account and server
+- installed packages
 
 ### Installation
 
