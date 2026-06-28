@@ -288,4 +288,36 @@ async def on_message(message):
         else:
             await message.channel.send("Tag someone! e.g. `!point @someone`")
 
+    if message.content.startswith('!wanted'):
+        if message.mentions:
+            target = message.mentions[0]
+            bounties = [
+                "₹50,000", "₹1,00,000", "₹5,00,000", "₹10,00,000", "₹69,420"
+            ]
+            crimes = [
+                "being too suspicious",
+                "existing without permission",
+                "knowing too much",
+                "vibing without a license",
+                "crimes against the server",
+                "unauthorized chaos",
+                "being dangerously unhinged",
+                "making everyone uncomfortable on purpose",
+            ]
+            bounty = random.choice(bounties)
+            crime = random.choice(crimes)
+            await message.channel.send(
+                f"🚨 **WANTED** 🚨\n"
+                f"━━━━━━━━━━━━━━━━━━\n"
+                f"👤 **{target.display_name}**\n"
+                f"🪪 aka {target.mention}\n"
+                f"━━━━━━━━━━━━━━━━━━\n"
+                f"⚖️ Crime: *{crime}*\n"
+                f"💰 Bounty: **{bounty}**\n"
+                f"━━━━━━━━━━━━━━━━━━\n"
+                f"Report sightings to the nearest moderator. Approach with caution. 🫡"
+            )
+        else:
+            await message.channel.send("Tag someone! e.g. `!wanted @someone`")
+
 client.run(os.getenv('DISCORD_TOKEN'))
