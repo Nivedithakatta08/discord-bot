@@ -52,6 +52,7 @@ A fun Discord bot built with Python that responds to commands in your server.
 | `!age <birth year>` | calculates how old someone is from their birth year |
 | `!horoscope <sign>` | gives a fake dramatic horoscope for tagged user's star sign|
 | `!point @someone` | Dramatically calls out and points at a user |
+| `!wanted @someone` | generates a "wanted poster" style callout message |
 
 ---
 
