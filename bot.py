@@ -272,16 +272,20 @@ async def on_message(message):
         else:
             await message.channel.send(f"🔮 **{sign.capitalize()} Horoscope:**\n\n{horoscopes[sign]}")
     
-async def point(ctx, member: discord.Member):
-    responses = [
-        f"👉 Everybody look at {member.mention} RIGHT NOW.",
-        f"👀 Psst... have you seen {member.mention} today? Because I have. 👉",
-        f"⚠️ ATTENTION: {member.mention} has been spotted. Proceed with caution. 👁️",
-        f"📢 The council hereby points at {member.mention}. That is all.",
-        f"🔦 Spotlight on {member.mention}. You're welcome (or not).",
-        f"🫵 {member.mention}. Yeah, you. We see you.",
-        f"🚨 BREAKING: {member.mention} exists and we're calling it out. 🚨",
-    ]
-    await ctx.send(random.choice(responses))
-       
+    if message.content.startswith('!point'):
+        if message.mentions:
+            target = message.mentions[0]
+            responses = [
+                f"👉 Everybody look at {target.mention} RIGHT NOW.",
+                f"👀 Psst... have you seen {target.mention} today? Because I have. 👉",
+                f"⚠️ ATTENTION: {target.mention} has been spotted. Proceed with caution. 👁️",
+                f"📢 The council hereby points at {target.mention}. That is all.",
+                f"🔦 Spotlight on {target.mention}. You're welcome (or not).",
+                f"🫵 {target.mention}. Yeah, you. We see you.",
+                f"🚨 BREAKING: {target.mention} exists and we're calling it out. 🚨",
+            ]
+            await message.channel.send(random.choice(responses))
+        else:
+            await message.channel.send("Tag someone! e.g. `!point @someone`")
+
 client.run(os.getenv('DISCORD_TOKEN'))
