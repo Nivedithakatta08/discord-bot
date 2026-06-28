@@ -271,5 +271,17 @@ async def on_message(message):
             await message.channel.send("Usage: `!horoscope <sign>` e.g. `!horoscope leo`")
         else:
             await message.channel.send(f"🔮 **{sign.capitalize()} Horoscope:**\n\n{horoscopes[sign]}")
-
+    
+async def point(ctx, member: discord.Member):
+    responses = [
+        f"👉 Everybody look at {member.mention} RIGHT NOW.",
+        f"👀 Psst... have you seen {member.mention} today? Because I have. 👉",
+        f"⚠️ ATTENTION: {member.mention} has been spotted. Proceed with caution. 👁️",
+        f"📢 The council hereby points at {member.mention}. That is all.",
+        f"🔦 Spotlight on {member.mention}. You're welcome (or not).",
+        f"🫵 {member.mention}. Yeah, you. We see you.",
+        f"🚨 BREAKING: {member.mention} exists and we're calling it out. 🚨",
+    ]
+    await ctx.send(random.choice(responses))
+       
 client.run(os.getenv('DISCORD_TOKEN'))
